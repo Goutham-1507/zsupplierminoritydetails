@@ -1,0 +1,142 @@
+<mvc:View
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:layout="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    controllerName="zsupplierminoritydetails.controller.MinorityDetails"
+    height="100%"
+>
+    <ObjectPageLayout
+        id="ObjectPageLayout"
+        showTitleInHeaderContent="true"
+        showFooter="{uiModel>/editable}"
+    >
+        <headerTitle>
+            <ObjectPageHeader
+                id="headerForTest"
+                objectTitle="Minority Status"
+                isObjectTitleAlwaysVisible="false"
+                isObjectSubtitleAlwaysVisible="false"
+            >
+                <actions>
+                    <m:Button
+                        text="Edit"
+                        type="Emphasized"
+                        press="onEditPress"
+                        visible="{=!${uiModel>/editable}}"
+                    />
+                    <m:Button
+                        text="Delete"
+                        press="onDeletePress"
+                        visible="{=!${uiModel>/editable}}"
+                    />
+                </actions>
+            </ObjectPageHeader>
+        </headerTitle>
+        <headerContent>
+            <layout:VerticalLayout />
+
+            <layout:VerticalLayout>
+                <!-- <layout:HorizontalLayout>
+                    <m:Title text="Company Code:" wrapping="true" />
+                    <m:Text text="{CompanyCode}" />
+                    
+                </layout:HorizontalLayout> -->
+                <m:ObjectAttribute
+                    title="Company Code"
+                    text="{Bukrs}"
+                />
+            </layout:VerticalLayout>
+
+            <layout:VerticalLayout>
+                <m:ObjectAttribute
+                    title="Business Partner"
+                    text="{Partner}"
+                />
+                <!-- <layout:HorizontalLayout>
+                    <m:Title text="Business Partner:" wrapping="true" />
+                    <m:Text text="{Partner}" />
+                </layout:HorizontalLayout> -->
+            </layout:VerticalLayout>
+        </headerContent>
+        <sections>
+            <ObjectPageSection id="idGeneralTab">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <smartForm:SmartForm
+                            id="smartForm"
+                            title="Minority Details"
+                            validationMode="Async"
+                            editable="{uiModel>/editable}"
+                            class="sapUxAPObjectPageSubSectionAlignContent"
+                        >
+                            <!-- {path: 'uiModel>/editable'} -->
+                            <smartForm:Group label="General Information">
+                                <smartForm:GroupElement
+                                    label="Minority Indicator"
+                                >
+                                    <smartField:SmartField
+                                        
+                                        value="{Mindk}"
+                                    />
+                                </smartForm:GroupElement>
+                                <smartForm:GroupElement label="StartDate">
+                                    <smartField:SmartField
+                                       
+                                        value="{Begda}"
+                                    />
+                                </smartForm:GroupElement>
+                                <smartForm:GroupElement label="EndDate">
+                                    <smartField:SmartField
+                                       
+                                        value="{Endda}"
+                                    />
+                                </smartForm:GroupElement>
+                            </smartForm:Group>
+                        </smartForm:SmartForm>
+                        <!-- <blocks>
+                            <core:Fragment fragmentName="siteassessment.fragment.General" type="XML" />
+                        </blocks> -->
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+            <ObjectPageSection
+                titleUppercase="false"
+                title="{i18n>RegistrationServices}"
+            >
+                <subSections>
+                    <ObjectPageSubSection title="{i18n>Registration}">
+                        <blocks>
+                            <!-- <core:Fragment fragmentName="siteassessment.fragment.RegistrationService" type="XML" /> -->
+                            <!-- <block:ContactInformation class="sapUxAPObjectPageSubSectionAlignContent" /> -->
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    <footer>
+            <m:Toolbar >
+                <m:ToolbarSpacer />
+                <m:Button
+                    text="Save"
+                    type="Emphasized"
+                    press="onSavePress"
+                />
+                <m:Button
+                    text="Cancel"
+                    press="onCancelPress"
+                />
+                <m:Button
+                    text="Discard Changes"
+                    press="onDiscardChanges"
+                />
+            </m:Toolbar>
+        </footer>     
+    </ObjectPageLayout>
+   
+</mvc:View>
